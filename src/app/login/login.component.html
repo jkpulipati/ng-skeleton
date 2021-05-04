@@ -1,0 +1,74 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <input 
+        type="text" 
+        id="name" 
+        class="fadeIn second" 
+        name="name"
+        appHighlight
+        placeholder="name"
+        [(ngModel)]="userName"
+        (ngModelChange)="onUserNameUpdate($event)"
+        #name="ngModel"
+        minlength="4"
+        required  >
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="alert alert-danger">
+
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
+          </div>
+
+        </div>
+      <input 
+        type="text" 
+        id="password" 
+        class="fadeIn third" 
+        name="password" 
+        placeholder="password"
+        [(ngModel)]="userPassword" 
+        #password="ngModel"
+        appHighlight
+        minlength="4"
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+        required >
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="alert alert-danger">
+
+          <div *ngIf="password.errors.required">
+            password is required.
+          </div>
+          <div *ngIf="password.errors.minlength">
+            password must be at least 4 characters long.
+          </div>
+          <div *ngIf="password.errors.pattern">
+            password must be at least 8 characters long one upper case and one number.
+          </div>
+        </div>
+      <input type="button" (click)="onNavigate()" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" appHighlight routerLink="dashboard">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<p>test works!</p>
+<div>
+    <p>{{ firstName }}</p>
+    {{ title }}
+</div>
+<button class="btn btn-primary" (click)="onUpdate()">Update</button>
+<div>
+    Employees
+
+    <ui>
+        <li *ngFor="let emp of employees">
+            {{ emp.name }}
+        </li>
+    </ui>
+</div>

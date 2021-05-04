@@ -1,0 +1,59 @@
+<div class="container" id="wrap">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form [formGroup]="registerForm" action="r" method="post" accept-charset="utf-8" class="form" role="form">
+        <legend>Sign Up</legend>
+        <h4>It's free and always will be.</h4>
+        <div class="row">
+          <div class="col-xs-6 col-md-6">
+            <input type="text" name="firstname" formControlName="firstName" value="" class="form-control input-lg" placeholder="First Name" />
+            <span class="text-danger"
+                *ngIf="(registerFormControl.firstName.touched) && registerFormControl.firstName.errors?.required">
+                First Name is required
+            </span>
+            <span class="text-danger"
+                *ngIf="registerForm.controls.firstName.touched && registerForm.controls.firstName.errors?.invalidPassword">
+                FirstName should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                letter and 1 number
+            </span>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <input type="text" name="lastname" formControlName="lastName" value="" class="form-control input-lg" placeholder="Last Name" />
+            <span class="text-danger"
+                *ngIf="(registerForm.controls.lastName.touched) && registerForm.controls.lastName.errors?.required">
+                Last Name is required
+            </span>
+          </div>
+        </div>
+        <input type="text" name="email" value="" formControlName="email" class="form-control input-lg" placeholder="Your Email" />
+        <span class="text-danger"
+            *ngIf="(registerForm.controls.email.touched) && registerForm.controls.email.errors?.required">
+            Email is required
+        </span>
+        <span class="text-danger"
+            *ngIf="(registerForm.controls.email.touched) && registerForm.controls.email.errors?.email">
+            please type correct email
+        </span>
+        <input
+          type="password" name="password" value="" class="form-control input-lg" placeholder="Password" />
+        <input
+          type="password" name="confirm_password" value="" class="form-control input-lg"
+          placeholder="Confirm Password" />
+        <label>Gender : </label> 
+        <label class="radio-inline">
+          <input type="radio" name="gender" value="M" id=male /> Male
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="gender" value="F" id=female /> Female
+        </label>
+        <br />
+        <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data
+          Use Policy, including our Cookie Use.</span>
+        <button class="btn btn-lg btn-primary btn-block signup-btn"
+          [disabled]="registerForm.invalid"
+           type="submit">
+          Create my account</button>
+      </form>
+    </div>
+  </div>
+</div>
